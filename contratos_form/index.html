@@ -26,33 +26,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 </head>
 <body>
-  <div id="app">
-    <v-app id="empad_contratos">
-      <v-stepper v-model="pasos_contratos" class="no-shadow border-0">
+  <div id="alta_contratos">
+    <v-app>
+      <v-stepper v-model="alta_contratos_model" class="no-shadow border-0">
         <v-stepper-header>
-          <v-stepper-step :complete="pasos_contratos > 1" step="1">Tipo</v-stepper-step>
+          <v-stepper-step :complete="alta_contratos_model > 1" step="1">Tipo</v-stepper-step>
           <v-divider></v-divider>
-          <v-stepper-step :complete="pasos_contratos > 2" step="2">Partes y plazos</v-stepper-step>
+          <v-stepper-step :complete="alta_contratos_model > 2" step="2">Partes y plazos</v-stepper-step>
           <v-divider></v-divider>
-          <v-stepper-step :complete="pasos_contratos > 3" step="3">Tasas y penalidades</v-stepper-step>
+          <v-stepper-step :complete="alta_contratos_model > 3" step="3">Tasas y penalidades</v-stepper-step>
           <v-divider></v-divider>
           <v-stepper-step step="4">Documentación y guardado</v-stepper-step>
         </v-stepper-header>
         <v-stepper-items>
           <v-stepper-content step="1">
             <v-card color="white">
-              <div class="contenido-form">                
-                <h3 class="text-gray"><span class="text-primary font-weight-light"> 1 | </span>Tipo</h3>
-              </div>
+             <v-container grid-list-md>
+              <v-layout row wrap justify-center text-xs-left class="contenido-form">
+                <v-flex xs12>
+                  <div>
+                    <h3 class="text-gray"><span class="text-primary font-weight-light"> 1 | </span>Tipo</h3>
+                  </div>                   
+                </v-flex>        
+                <v-flex xs12 md8>
+                  <div>                    
+                    <v-select  v-model="tipo_contratos_model" :items="tipo_contratos_items" label="Seleccione el contrato"></v-select>
+                  </div>
+                </v-flex>          
+              </v-layout>
+             </v-container>              
             </v-card>            
             <v-layout justify-space-between class=" pt-2 px-0">
               <div>                
-                <v-btn flat class="pa-0 mx-auto" @click.native="pasos_contratos = 1"><i class="fa fa-times mr-1 fa-1x"></i>Cancelar</v-btn>  
+                <v-btn flat class="pa-0 mx-auto" @click.native="alta_contratos_model = 1"><i class="fa fa-times mr-1 fa-1x"></i>Cancelar</v-btn>  
               </div>
               <div>
-                <v-btn color="primary" class="btn pa-0" @click.native="pasos_contratos = 2"><i class="fa fa-angle-right mr-1"></i>Continuar al paso 2</v-btn>
+                <v-btn color="primary" class="btn pa-0" @click.native="alta_contratos_model = 2"><i class="fa fa-angle-right mr-1"></i>Continuar al paso 2</v-btn>
               </div> 
-            </v-layout>         
+            </v-layout>        
           </v-stepper-content>
           <v-stepper-content step="2">
             <v-card color="white">
@@ -62,11 +73,11 @@
             </v-card>
             <v-layout justify-space-between class=" pt-2 px-0">
               <div>                
-                <v-btn flat class="pa-0 mx-auto" @click.native="pasos_contratos = 1"><i class="fa fa-times mr-1 fa-1x"></i>Cancelar</v-btn>  
+                <v-btn flat class="pa-0 mx-auto" @click.native="alta_contratos_model = 1"><i class="fa fa-times mr-1 fa-1x"></i>Cancelar</v-btn>  
               </div>
               <div>
-                <v-btn flat class="text-primary pa-0" @click.native="pasos_contratos = 1"><i class="fa fa-angle-left mr-1"></i>paso 1</v-btn>  
-                <v-btn color="primary" class="btn pa-0" @click.native="pasos_contratos = 3"><i class="fa fa-angle-right mr-1"></i>Continuar al paso 3</v-btn>
+                <v-btn flat class="text-primary pa-0" @click.native="alta_contratos_model = 1"><i class="fa fa-angle-left mr-1"></i>paso 1</v-btn>  
+                <v-btn color="primary" class="btn pa-0" @click.native="alta_contratos_model = 3"><i class="fa fa-angle-right mr-1"></i>Continuar al paso 3</v-btn>
               </div> 
             </v-layout>         
           </v-stepper-content>
@@ -78,11 +89,11 @@
             </v-card>            
             <v-layout justify-space-between class=" pt-2 px-0">
               <div>                
-                <v-btn flat class="pa-0 mx-auto" @click.native="pasos_contratos = 1"><i class="fa fa-times mr-1 fa-1x"></i>Cancelar</v-btn>  
+                <v-btn flat class="pa-0 mx-auto" @click.native="alta_contratos_model = 1"><i class="fa fa-times mr-1 fa-1x"></i>Cancelar</v-btn>  
               </div>
               <div>
-                <v-btn flat class="text-primary pa-0" @click.native="pasos_contratos = 2"><i class="fa fa-angle-left mr-1"></i>paso 2</v-btn>  
-                <v-btn color="primary" class="btn pa-0" @click.native="pasos_contratos = 4"><i class="fa fa-angle-right mr-1"></i>Continuar al paso 4</v-btn>
+                <v-btn flat class="text-primary pa-0" @click.native="alta_contratos_model = 2"><i class="fa fa-angle-left mr-1"></i>paso 2</v-btn>  
+                <v-btn color="primary" class="btn pa-0" @click.native="alta_contratos_model = 4"><i class="fa fa-angle-right mr-1"></i>Continuar al paso 4</v-btn>
               </div> 
             </v-layout>               
           </v-stepper-content>
@@ -94,11 +105,11 @@
             </v-card>            
             <v-layout justify-space-between class=" pt-2 px-0">
               <div>                
-                <v-btn flat class="pa-0 mx-auto" @click.native="pasos_contratos = 1"><i class="fa fa-times mr-1 fa-1x"></i>Cancelar</v-btn>  
+                <v-btn flat class="pa-0 mx-auto" @click.native="alta_contratos_model = 1"><i class="fa fa-times mr-1 fa-1x"></i>Cancelar</v-btn>  
               </div>
               <div>
-                <v-btn flat class="text-primary pa-0" @click.native="pasos_contratos = 3"><i class="fa fa-angle-left mr-1"></i>paso 3</v-btn>  
-                <v-btn color="success" class="btn pa-0" @click.native="pasos_contratos = 1"><i class="fa fa-check mr-1"></i>Guardar y finalizar</v-btn>
+                <v-btn flat class="text-primary pa-0" @click.native="alta_contratos_model = 3"><i class="fa fa-angle-left mr-1"></i>paso 3</v-btn>  
+                <v-btn color="success" class="btn pa-0" @click.native="alta_contratos_model = 1"><i class="fa fa-check mr-1"></i>Guardar y finalizar</v-btn>
               </div> 
             </v-layout>        
           </v-stepper-content>
