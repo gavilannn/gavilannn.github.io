@@ -2,7 +2,7 @@ new Vue({
     el: '#app',
     data () {
       return {
-        e1: 0
+        pasos_contratos: 0
       }
     }
   })
