@@ -1,0 +1,27 @@
+.banner-home {
+    background: url(../img/banner-home.jpg); background-size: auto 50%; background-position:bottom center; background-repeat: repeat-x;
+    background-color: #fec88f;
+}
+
+.card { max-width: 320px!important; margin-left: auto!important; margin-right: auto!important;}
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .card { width: calc(50% - 1rem)!important; }    
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .card{ width: calc(33.33333333% - 1rem)!important; }    
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .card { width: calc(25% - 1rem)!important; }  
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+      
+}
