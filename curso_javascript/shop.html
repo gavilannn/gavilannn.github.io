@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDB | Tienda de bebidas </title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom-layout-styles.css">
+    <link rel="stylesheet" href="css/custom-styles.css">
+</head>
+<body>
+
+ 
+    <h1 class="visually-hidden">Inicio</h1>
+
+    <nav class="navbar navbar-expand-lg navbar-dark border-0 bg-dark sticky-top flex-md-column">
+        
+        <div class="container px-1 px-lg-3 d-flex justify-content-between flex-row flex-wrap">
+            <a class="navbar-brand text-white fw-bold d-inline-flex fs-6 fw-bold me-auto me-lg-0 order-2 order-lg-1" href="#"><i class="fas fa-glass-cheers fa-2x me-3 mt-1 mb-2 mb-lg-0"></i><span class="mt-0 lh-sm d-none d-lg-inline mt-lg-2">Tienda de bebidas</span></a>
+            <button class="navbar-toggler order-1 order-lg-2 ps-0 border-0 me-auto text-white fs-6 not-focus" type="button" data-bs-toggle="collapse"
+                data-bs-target="#menusuperior,#menuproductos" aria-controls="menusuperior,menuproductos" aria-expanded="false"
+                aria-label="Menú">
+                <i class="fas fa-bars me-2"></i> Menú
+            </button>
+            <div class="collapse navbar-collapse d-none d-lg-inline-flex w-75 maxw550-px order-lg-2" id="search-lg">
+                <form class=" mb-auto input-group mx-auto ">
+                    <input class="form-control border-dark border-end-0" type="search" placeholder="Busca tu bebida" aria-label="Search">
+                    <button class="btn btn-light bg-white border-dark border-start-0" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <div id="login" class="d-none d-lg-inline-flex order-lg-4">
+                <span class="text-white"><i class="fas fa-user "></i> Inicia sesión</span>
+            </div>
+            <div id="cart" class="order-3 order-lg-5">
+                <span class="text-white"><i class="fas fa-shopping-cart "></i> Tu carrito</span>                
+            </div>
+        </div>
+
+        <div class="container border-top px-1  border-dark pt-lg-2 mt-lg-2">                            
+            <div class=" collapse navbar-collapse order-1 order-lg-2" id="menuproductos">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item search-sm d-inline-block d-lg-none">
+                        <form class="d-flex w-100 mb-auto input-group mx-auto">
+                            <input class="form-control border-dark border-end-0" type="search" placeholder="Busca tu bebida" aria-label="Search">
+                            <button class="btn btn-light bg-white border-dark border-start-0" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white " aria-current="page" href="#">Cervezas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Vinos y champagnes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Whiskies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Gines</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Vodkas</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" aria-current="page" href="#">Todo el catálogo</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav me-auto d-inline-block d-lg-none">
+                        <li class="nav-item" >
+                        <span class="text-white"><i class="fas fa-user "></i> Inicia sesión</span>
+                    </li>
+                </ul>                      
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="banner-home container-fluid ">
+        <div class="row mb-0 h250-px">
+            <div class="mx-auto col-12 col-md-10 col-lg-8 col-xl-7 minh-100 d-flex justify-content-center align-items-top flex-wrap">
+                <h2 class="text-dark  text-center fs-2 w-100 mx-auto my-5">
+                    Todas tus bebidas en un solo lugar
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="destacados" class="container-fluid container-xl">
+        <div class="row g-2 py-5">
+            <div class="col-12 py-4">
+                <h2 class="text-dark fs-3 text-center">Aprovechá el #CyberMonday</h2>
+            </div>
+            <div id="product-0001" class="product-card col-md-4 col-lg-3 card border-dark rounded-0 ">
+                <div class="card-img-top d-flex flex-row flex-wrap justify-content-center">
+                    <img src="./img/drinks/drink-no-img.jpg" alt="icono de vaso con bebida" class="img-fluid maxh150-px">
+                </div>
+                <div class="card-body d-flex flex-row flex-wrap justify-content-center">
+                    <h5 class="card-title text-center w-100">Cerveza Andes Origen</h5>
+                    <p class="card-text text-center w-100">Rubia | Lata | Pack x6</p>
+                    <p class="price text-center fs-4 mb-0 fw-bold text-dark w-100">$ 600</p>
+                    <small class="unit-price text-center text-dark w-100 mb-3">Precio Unit.: $100</small>
+                    <div class="input-group maxw150-px mx-auto">
+                        <button class="rem btn btn-dark rounded-0" ><i class="text-white fas fa-minus"></i></button>
+                        <input type="number" maxlength="4" class="input-sm form-control text-center border-dark" value="0" readonly>
+                        <button class="add btn btn-dark rounded-0" ><i class="text-white fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div id="product-0002" class="product-card col-sm-6 col-md-4 col-lg-3 card border-dark rounded-0 ">
+                <div class="card-img-top d-flex flex-row flex-wrap justify-content-center">
+                    <img src="./img/drinks/drink-no-img.jpg" alt="icono de vaso con bebida" class="img-fluid maxh150-px">
+                </div>
+                <div class="card-body d-flex flex-row flex-wrap justify-content-center">
+                    <h5 class="card-title text-center w-100">Cerveza Andes Origen</h5>
+                    <p class="card-text text-center w-100">Roja | Lata | Pack x6</p>
+                    <p class="price text-center fs-4 mb-0 fw-bold text-dark w-100">$ 600</p>
+                    <small class="unit-price text-center text-dark w-100 mb-3">Precio Unit.: $100</small>
+                    <div class="input-group maxw150-px mx-auto">
+                        <button class="rem btn btn-dark rounded-0" ><i class="text-white fas fa-minus"></i></button>
+                        <input type="number" maxlength="4" class="input-sm form-control text-center border-dark" value="0" readonly>
+                        <button class="add btn btn-dark rounded-0" ><i class="text-white fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div id="product-0003" class="product-card col-sm-6 col-md-4 col-lg-3 card border-dark rounded-0 ">
+                <div class="card-img-top d-flex flex-row flex-wrap justify-content-center">
+                    <img src="./img/drinks/drink-no-img.jpg" alt="icono de vaso con bebida" class="img-fluid maxh150-px">
+                </div>
+                <div class="card-body d-flex flex-row flex-wrap justify-content-center">
+                    <h5 class="card-title text-center w-100">Cerveza Andes Origen</h5>
+                    <p class="card-text text-center w-100">Negra | Lata | Pack x6</p>
+                    <p class="price text-center fs-4 mb-0 fw-bold text-dark w-100">$ 600</p>
+                    <small class="unit-price text-center text-dark w-100 mb-3">Precio Unit.: $100</small>
+                    <div class="input-group maxw150-px mx-auto">
+                        <button class="rem btn btn-dark rounded-0" ><i class="text-white fas fa-minus"></i></button>
+                        <input type="number" maxlength="4" class="input-sm form-control text-center border-dark" value="0" readonly>
+                        <button class="add btn btn-dark rounded-0" ><i class="text-white fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div id="product-0004" class="product-card col-sm-6 col-md-4 col-lg-3 card border-dark rounded-0 ">
+                <div class="card-img-top d-flex flex-row flex-wrap justify-content-center">
+                    <img src="./img/drinks/drink-no-img.jpg" alt="icono de vaso con bebida" class="img-fluid maxh150-px">
+                </div>
+                <div class="card-body d-flex flex-row flex-wrap justify-content-center">
+                    <h5 class="card-title text-center w-100">Cerveza Andes Origen</h5>
+                    <p class="card-text text-center w-100">Criolla | Lata | Pack x6</p>
+                    <p class="price text-center fs-4 mb-0 fw-bold text-dark w-100">$ 600</p>
+                    <small class="unit-price text-center text-dark w-100 mb-3">Precio Unit.: $100</small>
+                    <div class="input-group maxw150-px mx-auto">
+                        <button class="rem btn btn-dark rounded-0" ><i class="text-white fas fa-minus"></i></button>
+                        <input  type="number" maxlength="4" class="input-sm form-control text-center border-dark" value="0" readonly>
+                        <button class="add btn btn-dark rounded-0"><i class="text-white fas fa-plus"></i></button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/fa-all.js"></script>
+    <script src="js/shop-scripts.js"></script>
+</body>
+</html>
