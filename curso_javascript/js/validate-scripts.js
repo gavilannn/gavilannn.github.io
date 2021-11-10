@@ -19,30 +19,9 @@ function getUserData(){
     const dd = parseInt(document.getElementById('dayBorn').value);
     const mm = parseInt(document.getElementById('monthBorn').value);
     const yyyy= parseInt(document.getElementById('yearBorn').value);
-
-    const userBorn = new Born (yyyy, mm, dd);
-
-    console.log(userBorn);  
     
-    const ageValidation = ageValidate(userBorn.year, userBorn.month, userBorn.day);
-
-    console.log(ageValidation);
-
-    if (ageValidation) {
-
-        userBornJSON = JSON.stringify(userBorn);
-
-        localStorage.setItem('Cumpleaños', userBornJSON);
-        location.href = "shop.html" ;
-        
-    } else {
-
-        const alertMessage = document.getElementById('message');
-        alertMessage.innerHTML = 'No eres mayor de edad por lo que no puedes ingresar al sitio';
-        
-     }
-
-
+    ageValidate(yyyy, mm, dd);
+    
     return false;    
 
 }
@@ -52,15 +31,33 @@ function ageValidate(yyyyBorn, mmBorn, ddBorn) {
     let today = new Date();
     
     let todayDate = (today.getFullYear()*10000) + ((today.getMonth()+1)*100) + today.getDate();    
+
+    const userBorn = new Born (yyyyBorn, mmBorn, ddBorn);
     
-    let userBorn = (yyyyBorn*10000) + (mmBorn*100) +  ddBorn;
+    let inputBorn = (userBorn.year*10000) + (userBorn.month*100) +  userBorn.day;
     
-    let ageUser = parseInt((todayDate - userBorn) / 10000);
+    let ageUser = parseInt((todayDate - inputBorn) / 10000);
+
     
     if (ageUser >= 18) {    
-        return true;    
+
+        userBornJSON = JSON.stringify(userBorn);
+
+        localStorage.setItem('Cumpleaños', userBornJSON);
+        location.href = "shop.html" ;  
+        
     } else {
-        return 0;
+
+        if (ageUser < 0) {
+
+            const alertMessage = document.getElementById('message');
+            alertMessage.innerHTML = '¿Acaso vienes del futuro? Por favor cuéntame como es...';
+            
+        } else {
+            const alertMessage = document.getElementById('message');
+            alertMessage.innerHTML = 'No eres mayor de edad por lo que no puedes ingresar al sitio';
+            
+        }
          
     }
 }
