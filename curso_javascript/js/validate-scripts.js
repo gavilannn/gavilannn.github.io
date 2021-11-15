@@ -9,18 +9,24 @@ class Born {
 }
 
 // traigo toda la info del dom del id
-const bornValidateForm = document.getElementById("validateBorn");
+const bornValidateForm = document.getElementById('validateBorn');
+
+const dd = document.getElementById('dayBorn');
+const mm = document.getElementById('monthBorn');
+const yyyy= document.getElementById('yearBorn');
 
 //en la accion ejecuta funcion
-bornValidateForm.onsubmit = getUserData;
 
-function getUserData(){
+bornValidateForm.addEventListener('submit', getUserData);
+//bornValidateForm.onsubmit = getUserData;
 
-    const dd = parseInt(document.getElementById('dayBorn').value);
-    const mm = parseInt(document.getElementById('monthBorn').value);
-    const yyyy= parseInt(document.getElementById('yearBorn').value);
+function getUserData(e){
+
+    e.preventDefault();
+
     
-    ageValidate(yyyy, mm, dd);
+    
+    ageValidate(yyyy.value, mm.value, dd.value);
     
     return false;    
 
@@ -34,30 +40,44 @@ function ageValidate(yyyyBorn, mmBorn, ddBorn) {
 
     const userBorn = new Born (yyyyBorn, mmBorn, ddBorn);
     
-    let inputBorn = (userBorn.year*10000) + (userBorn.month*100) +  userBorn.day;
+    let inputBorn = (parseInt(userBorn.year*10000)) + (parseInt(userBorn.month*100)) +  parseInt(userBorn.day);
     
-    let ageUser = parseInt((todayDate - inputBorn) / 10000);
+    let ageUser = (todayDate - inputBorn) / 10000;
 
-    
-    if (ageUser >= 18) {    
+    dd.classList.remove('border-danger');
+    mm.classList.remove('border-danger');
+    yyyy.classList.remove('border-danger');
 
-        userBornJSON = JSON.stringify(userBorn);
-
-        localStorage.setItem('Cumpleaños', userBornJSON);
-        location.href = "shop.html" ;  
+    if (isNaN(inputBorn) || (inputBorn == " ")) {
         
+        const alertMessage = document.getElementById('message');
+        dd.classList.add('border-danger');
+        mm.classList.add('border-danger');
+        yyyy.classList.add('border-danger');
+        alertMessage.innerHTML = 'Todos los campos son obligatorios';        
+
     } else {
+    
+        if (ageUser >= 18) {    
 
-        if (ageUser < 0) {
+            userBornJSON = JSON.stringify(userBorn);
 
-            const alertMessage = document.getElementById('message');
-            alertMessage.innerHTML = '¿Acaso vienes del futuro? Por favor cuéntame como es...';
+            localStorage.setItem('Cumpleaños', userBornJSON);
+            location.href = 'shop.html' ;  
             
         } else {
-            const alertMessage = document.getElementById('message');
-            alertMessage.innerHTML = 'No eres mayor de edad por lo que no puedes ingresar al sitio';
+
+            if (ageUser < 0) {
+
+                const alertMessage = document.getElementById('message');
+                alertMessage.innerHTML = '¿Acaso vienes del futuro? Por favor cuéntame como es...';
+                
+            } else {
+                const alertMessage = document.getElementById('message');
+                alertMessage.innerHTML = 'No eres mayor de edad por lo que no puedes ingresar al sitio';
+                
+            }
             
         }
-         
-    }
+    }    
 }
