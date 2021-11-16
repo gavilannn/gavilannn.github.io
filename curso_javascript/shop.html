@@ -34,9 +34,7 @@
             <div id="login" class="d-none d-lg-inline-flex order-lg-4">
                 <span class="text-white"><i class="fas fa-user "></i> Inicia sesión</span>
             </div>
-            <div id="cart" class="order-3 order-lg-5">
-                <span class="text-white"><i class="fas fa-shopping-cart "></i> Tu carrito <span id="itemsCount">(0)</span></span>                
-            </div>
+            <span id="cart" data-bs-toggle="modal" data-bs-target="#cartModal" class="order-3 order-lg-5 text-white"><i class="fas fa-shopping-cart "></i> Tu carrito <span id="itemsCount">(0)</span></span>
         </div>
 
         <div class="container border-top px-1  border-dark pt-lg-2 mt-lg-2">                            
@@ -92,13 +90,31 @@
     <section id="destacados" class="container-fluid container-xl">
         <div id="productTitle" class="row pt-5">
             <div class="col-12 py-4">
-                <h2 class="text-dark fs-3 text-center">Aprovechá el #CyberMonday</h2>
+                <h2 class="text-dark fs-3 text-center">Productos destacados</h2>
             </div>
         </div>
         <div id="productList" class="row g-2 pb-5">
             <!--Contenido por javascript-->
         </div>
     </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cartModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="staticBackdropLabel">Tu carrito</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="cartItems" class="modal-body">
+            
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-dark rounded-0 " data-bs-dismiss="modal">Continuar al pago</button>
+            </div>
+        </div>
+        </div>
+    </div>
 
  
 

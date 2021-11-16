@@ -1,5 +1,7 @@
+window.onload = localStorage.removeItem('Carrito');
+
 class Product {
-    constructor(productSKU, productName, productType, productVariant, productPresentation, productPresentationPack, productPresentationQty, productPrice) {
+    constructor(productSKU, productName, productType, productVariant, productPresentation, productPresentationPack, productPresentationQty, productPrice, productInCart) {
         this.productSKU = productSKU;
         this.productName = productName;
         this.productType = productType;
@@ -8,31 +10,30 @@ class Product {
         this.productPresentationPack = productPresentationPack;
         this.productPresentationQty = productPresentationQty;
         this.productPrice = productPrice;
+        this.productInCart = productInCart;
         
     }
 }
 
 let productList = [];
 
-function addProducts(productSKU, productName, productType, productVariant, productPresentation, productPresentationPack, productPresentationQty, productPrice){    
-    var p = new Product(productSKU, productName, productType, productVariant, productPresentation, productPresentationPack, productPresentationQty, productPrice); // here we create instance
+function addProducts(productSKU, productName, productType, productVariant, productPresentation, productPresentationPack, productPresentationQty, productPrice, productInCart){    
+    var p = new Product(productSKU, productName, productType, productVariant, productPresentation, productPresentationPack, productPresentationQty, productPrice, productInCart); 
     productList.push(p);
 }
 
-addProducts('ANDES0001', 'Andes Origen', 'Cerveza', 'Rubia', 'Lata', 'Pack', 6, 150);
-addProducts('ANDES0002', 'Andes Origen', 'Cerveza', 'Roja', 'Lata', 'Pack', 6, 150);
-addProducts('ANDES0003', 'Andes Origen', 'Cerveza', 'Negra', 'Lata', 'Pack', 6, 150);
-addProducts('ANDES0004', 'Andes Origen', 'Cerveza', 'Criolla', 'Lata', 'Pack', 6, 150);
-addProducts('ANDES0005', 'Andes Origen', 'Cerveza', 'Ipa', 'Lata', 'Pack', 6, 150);
-addProducts('ANDES0006', 'Andes Origen', 'Cerveza', 'Red Ipa', 'Lata', 'Pack', 6, 150);
-addProducts('QUILMES0001', 'Quilmes', 'Cerveza', 'Rubia', 'Lata', 'Pack', 6, 100);
-addProducts('QUILMES0002', 'Quilmes', 'Cerveza', 'Red Lager', 'Lata', 'Pack', 6, 100);
-addProducts('QUILMES0003', 'Quilmes', 'Cerveza', 'Bock', 'Lata', 'Pack', 6, 100);
-addProducts('QUILMES0004', 'Quilmes', 'Cerveza', 'Stout', 'Lata', 'Pack', 6, 100);
-addProducts('QUILMES0005', 'Quilmes', 'Cerveza', '00%', 'Lata', 'Pack', 6, 100);
-addProducts('PATA0001', 'Patagonia', 'Cerveza', '24.7', 'Lata', 'Pack', 6, 200);
-
-
+addProducts('ANDES0001', 'Andes Origen', 'Cerveza', 'Rubia', 'Lata', 'Pack', 6, 150, 0);
+addProducts('ANDES0002', 'Andes Origen', 'Cerveza', 'Roja', 'Lata', 'Pack', 6, 150, 0);
+addProducts('ANDES0003', 'Andes Origen', 'Cerveza', 'Negra', 'Lata', 'Pack', 6, 150, 0);
+addProducts('ANDES0004', 'Andes Origen', 'Cerveza', 'Criolla', 'Lata', 'Pack', 6, 150, 0);
+addProducts('ANDES0005', 'Andes Origen', 'Cerveza', 'Ipa', 'Lata', 'Pack', 6, 150, 0);
+addProducts('ANDES0006', 'Andes Origen', 'Cerveza', 'Red Ipa', 'Lata', 'Pack', 6, 150, 0);
+addProducts('QUILMES0001', 'Quilmes', 'Cerveza', 'Rubia', 'Lata', 'Pack', 6, 100, 0);
+addProducts('QUILMES0002', 'Quilmes', 'Cerveza', 'Red Lager', 'Lata', 'Pack', 6, 100, 0);
+addProducts('QUILMES0003', 'Quilmes', 'Cerveza', 'Bock', 'Lata', 'Pack', 6, 100, 0);
+addProducts('QUILMES0004', 'Quilmes', 'Cerveza', 'Stout', 'Lata', 'Pack', 6, 100, 0);
+addProducts('QUILMES0005', 'Quilmes', 'Cerveza', '00%', 'Lata', 'Pack', 6, 100, 0);
+addProducts('PATA0001', 'Patagonia', 'Cerveza', '24.7', 'Lata', 'Pack', 6, 200, 0);
 
 
 
@@ -55,70 +56,115 @@ for (const p of productList) {
     <div class="card-body d-flex flex-row flex-wrap justify-content-center">
         <h5 class="card-title text-center w-100">${p.productType}&nbsp;${p.productName}</h5>
         <p class="card-text text-center w-100">${p.productVariant}&nbsp;|&nbsp;${p.productPresentation}&nbsp;|&nbsp;${p.productPresentationPack}&nbsp;x${p.productPresentationQty}</p>
-        <p class="price text-center fs-4 mb-0 fw-bold text-dark w-100">$${(p.productPrice)*6}</p>
-        <small class="unit-price text-center text-dark w-100 mb-3">Precio Unit.: $${p.productPrice}</small>
+        <p class="price text-center fs-4 mb-0 fw-bold text-dark w-100">$${(p.productPrice)*(p.productPresentationQty)}</p><small class="unit-price text-center text-dark w-100 mb-3">Precio Unit.: $${p.productPrice}</small>
         <form class="input-group maxw150-px mx-auto">
             <button class="rem btn btn-dark rounded-0" ><i class="text-white fas fa-minus"></i></button>
-            <input  type="number" maxlength="4" class="input-sm form-control text-center border-dark" value="0"readonly >
+            <input  type="number" maxlength="4" class="inputQty input-sm form-control text-center border-dark" value="${p.productInCart}" readonly >
             <button class="add btn btn-dark rounded-0"><i class="text-white fas fa-plus"></i></button>
         </form> 
     </div>`;
     //y ahora la asigno como child del wrapper
     productWrapper.appendChild(productCard);    
+    
 }
 
 // Aumentar y disminuir productos
 
-const productosHome = document.querySelectorAll('.product-card');
+const prodLoop = document.querySelectorAll('.product-card');
 
 const itemCount = document.getElementById('itemsCount');
 
-let productoHomeIndex = 0;
+//Array con los valores de los input, luego almacena las modificaciones
 
-let inputValues = [];
-
-let cartItems = 0;
+let cartCounter = 0;
 
 
-for (let i = 0; i < productosHome.length; i++) {
+const btnAdd = document.querySelectorAll('.add');
 
-    btnAdd = productosHome[i].querySelector('.add');
+const btnRem = document.querySelectorAll('.rem');
 
-    btnRem = productosHome[i].querySelector('.rem');
+const inputQty = document.querySelectorAll('.inputQty');
 
 
-    inputValues.push(parseInt(productosHome[i].querySelector('.input-sm').value));
+for (let i = 0; i < prodLoop.length; i++) {
 
-    btnAdd.addEventListener('click', (e) => {
+    btnAdd[i].addEventListener('click', (e) => {
         e.preventDefault();
-        const input =  productosHome[i].querySelector('.input-sm');
-        let modValueAdd = inputValues[i] + 1;
-        input.setAttribute('value', modValueAdd);
-        inputValues[i] = modValueAdd;
-        cartItems = cartItems+1;
-        itemCount.innerHTML = '(' + cartItems  + ')';
+        let modValueAdd = parseInt(productList[i].productInCart) + 1;        
+        productList[i].productInCart = modValueAdd;
+        inputQty[i].setAttribute('value', modValueAdd);
+        cartCounter = cartCounter+1;
+        itemCount.innerHTML = '(' + cartCounter  + ')';
+        AddToCart();
 
     });  
     
-    btnRem.addEventListener('click', (e) => {
+    btnRem[i].addEventListener('click', (e) => {
         e.preventDefault();
-        if (inputValues[i] <= 0 ) {
+        if (productList[i].productInCart <= 0 ) {
 
-            inputValues[i] = 0;
+            productList[i].productInCart = 0;
 
         } else {
 
-            const input =  productosHome[i].querySelector('.input-sm');
-            let modValueRem = inputValues[i] - 1;        
-            input.setAttribute('value', modValueRem);
-            inputValues[i] = modValueRem;
-            cartItems = cartItems - 1;
-            itemCount.innerHTML = '(' + cartItems  + ')';
+            let modValueRem = productList[i].productInCart - 1;            
+            productList[i].productInCart = modValueRem;
+            inputQty[i].setAttribute('value', modValueRem);
+            cartCounter = cartCounter-1;
+            itemCount.innerHTML = '(' + cartCounter  + ')';
+            AddToCart();       
+
         }
 
     }); 
-    
-      
+        
 }
+
+
+function AddToCart(){
+    const cart = productList.filter(productList => productList.productInCart > 0);
+    let cartList = JSON.stringify(cart);
+    localStorage.setItem('Carrito', cartList);   
+    
+}
+
+const modalOpen = document.getElementById('cart');
+
+const cartItemsList = document.getElementById('cartItems');
+
+modalOpen.addEventListener('click', (e) => {
+
+    e.preventDefault();    
+
+    let cartItems = JSON.parse(localStorage.getItem('Carrito'));
+
+    let cartItemsListInner = []
+
+    for (const p of cartItems) {
+
+        cartItemsListInner.push(`<div class="d-block rounded border text-left px-4 py-2">
+        <span>${(p.productInCart)}x${p.productType}&nbsp;${p.productName}-${p.productVariant}&nbsp;|&nbsp;${p.productPresentation}&nbsp;|&nbsp;${p.productPresentationPack}&nbsp;x${p.productPresentationQty}</span>
+        <span class="d-block fw-bold">Subtotal: $${(p.productPrice)*(p.productPresentationQty)*(p.productInCart)}</span>
+        </div>`)  
+        
+    }
+
+    cartItemsList.innerHTML = cartItemsListInner.join('');   
+
+})
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
 
 
