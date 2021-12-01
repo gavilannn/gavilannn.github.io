@@ -28,6 +28,8 @@ function createCart() {
 
     if (cartItems) {
 
+        $("#cartItems > div").remove();
+
         cartItems.forEach(p => {
             $("#cartItems").append(`<div class="d-block rounded border text-left px-4 py-2">
             <span>${(p.productInCart)}x${p.productType}&nbsp;${p.productName}-${p.productVariant}&nbsp;|&nbsp;${p.productPresentation}&nbsp;|&nbsp;${p.productPresentationPack}&nbsp;x${p.productPresentationQty}</span>
