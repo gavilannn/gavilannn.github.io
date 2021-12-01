@@ -22,9 +22,7 @@ bornValidateForm.addEventListener('submit', getUserData);
 
 function getUserData(e){
 
-    e.preventDefault();
-
-    
+    e.preventDefault();    
     
     ageValidate(yyyy.value, mm.value, dd.value);
     
@@ -48,8 +46,7 @@ function ageValidate(yyyyBorn, mmBorn, ddBorn) {
     mm.classList.remove('border-danger');
     yyyy.classList.remove('border-danger');
 
-    if (isNaN(inputBorn) || (inputBorn == " ")) {
-        
+    if (isNaN(inputBorn) || (inputBorn == " ")) {        
         const alertMessage = document.getElementById('message');
         dd.classList.add('border-danger');
         mm.classList.add('border-danger');

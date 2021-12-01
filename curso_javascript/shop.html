@@ -31,9 +31,9 @@
                     <button class="btn btn-light bg-white border-dark border-start-0" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
-            <div id="login" class="d-none d-lg-inline-flex order-lg-4">
+            <!-- <div id="login" class="d-none d-lg-inline-flex order-lg-4">
                 <span class="text-white"><i class="fas fa-user "></i> Inicia sesión</span>
-            </div>
+            </div> -->
             <span id="cart" data-bs-toggle="modal" data-bs-target="#cartModal" class="order-3 order-lg-5 text-white"><i class="fas fa-shopping-cart "></i> Tu carrito <span id="itemsCount">(0)</span></span>
         </div>
 
@@ -110,7 +110,8 @@
             
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-dark rounded-0 " data-bs-dismiss="modal">Continuar al pago</button>
+                <button type="button" class="btn btn-secondary rounded-0 " id="emptyCart">Vaciar carrito</button>    
+                <button type="button" class="btn btn-dark rounded-0 " data-bs-dismiss="modal">Continuar al pago</button>
             </div>
         </div>
         </div>
@@ -118,9 +119,12 @@
 
  
 
-    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/fa-all.js"></script>
     <script src="js/shop-scripts.js"></script>
     <script src="js/products.js"></script>
+    <script src="js/cart-jquery.js"></script>
+</body>
 </body>
 </html>

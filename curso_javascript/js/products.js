@@ -1,5 +1,3 @@
-window.onload = localStorage.removeItem('Carrito');
-
 class Product {
     constructor(productSKU, productName, productType, productVariant, productPresentation, productPresentationPack, productPresentationQty, productPrice, productInCart) {
         this.productSKU = productSKU;
@@ -10,46 +8,45 @@ class Product {
         this.productPresentationPack = productPresentationPack;
         this.productPresentationQty = productPresentationQty;
         this.productPrice = productPrice;
-        this.productInCart = productInCart;
-        
+        this.productInCart = productInCart;        
     }
 }
 
 let productList = [];
 
-function addProducts(productSKU, productName, productType, productVariant, productPresentation, productPresentationPack, productPresentationQty, productPrice, productInCart){    
-    var p = new Product(productSKU, productName, productType, productVariant, productPresentation, productPresentationPack, productPresentationQty, productPrice, productInCart); 
-    productList.push(p);
-}
-
-addProducts('ANDES0001', 'Andes Origen', 'Cerveza', 'Rubia', 'Lata', 'Pack', 6, 150, 0);
-addProducts('ANDES0002', 'Andes Origen', 'Cerveza', 'Roja', 'Lata', 'Pack', 6, 150, 0);
-addProducts('ANDES0003', 'Andes Origen', 'Cerveza', 'Negra', 'Lata', 'Pack', 6, 150, 0);
-addProducts('ANDES0004', 'Andes Origen', 'Cerveza', 'Criolla', 'Lata', 'Pack', 6, 150, 0);
-addProducts('ANDES0005', 'Andes Origen', 'Cerveza', 'Ipa', 'Lata', 'Pack', 6, 150, 0);
-addProducts('ANDES0006', 'Andes Origen', 'Cerveza', 'Red Ipa', 'Lata', 'Pack', 6, 150, 0);
-addProducts('QUILMES0001', 'Quilmes', 'Cerveza', 'Rubia', 'Lata', 'Pack', 6, 100, 0);
-addProducts('QUILMES0002', 'Quilmes', 'Cerveza', 'Red Lager', 'Lata', 'Pack', 6, 100, 0);
-addProducts('QUILMES0003', 'Quilmes', 'Cerveza', 'Bock', 'Lata', 'Pack', 6, 100, 0);
-addProducts('QUILMES0004', 'Quilmes', 'Cerveza', 'Stout', 'Lata', 'Pack', 6, 100, 0);
-addProducts('QUILMES0005', 'Quilmes', 'Cerveza', '00%', 'Lata', 'Pack', 6, 100, 0);
-addProducts('PATA0001', 'Patagonia', 'Cerveza', '24.7', 'Lata', 'Pack', 6, 200, 0);
-
-
-
+//selectores de elementos
 const productWrapper = document.getElementById('productList');
+const itemCount = document.getElementById('itemsCount');
+
+// construccion lista de productos
+if (localStorage.getItem('listaActualizada')){
+    productList = JSON.parse(localStorage.getItem('listaActualizada'));
+    itemCount.innerHTML = '(' + cartCounter()  + ')';
+} else {
+    addProducts('ANDES0001', 'Andes Origen', 'Cerveza', 'Rubia', 'Lata', 'Pack', 6, 150, 0);
+    addProducts('ANDES0002', 'Andes Origen', 'Cerveza', 'Roja', 'Lata', 'Pack', 6, 150, 0);
+    addProducts('ANDES0003', 'Andes Origen', 'Cerveza', 'Negra', 'Lata', 'Pack', 6, 150, 0);
+    addProducts('ANDES0004', 'Andes Origen', 'Cerveza', 'Criolla', 'Lata', 'Pack', 6, 150, 0);
+    addProducts('ANDES0005', 'Andes Origen', 'Cerveza', 'Ipa', 'Lata', 'Pack', 6, 150, 0);
+    addProducts('ANDES0006', 'Andes Origen', 'Cerveza', 'Red Ipa', 'Lata', 'Pack', 6, 150, 0);
+    addProducts('QUILMES0001', 'Quilmes', 'Cerveza', 'Rubia', 'Lata', 'Pack', 6, 100, 0);
+    addProducts('QUILMES0002', 'Quilmes', 'Cerveza', 'Red Lager', 'Lata', 'Pack', 6, 100, 0);
+    addProducts('QUILMES0003', 'Quilmes', 'Cerveza', 'Bock', 'Lata', 'Pack', 6, 100, 0);
+    addProducts('QUILMES0004', 'Quilmes', 'Cerveza', 'Stout', 'Lata', 'Pack', 6, 100, 0);
+    addProducts('QUILMES0005', 'Quilmes', 'Cerveza', '00%', 'Lata', 'Pack', 6, 100, 0);
+    addProducts('PATA0001', 'Patagonia', 'Cerveza', '24.7', 'Lata', 'Pack', 6, 200, 0);
+}
 
 for (const p of productList) {
 
     // Creo una variable para un elemento
     let productCard = document.createElement("div");
-    //defino id y clases BS
-    
+
+    //defino id y clases BS    
     productCard.setAttribute('id', p.productSKU);
-
     productCard.classList.add('product-card', 'col-sm-6', 'col-md-4', 'col-lg-3', 'card', 'border-dark', 'rounded-0', 'mb-2');
-    //agrego el html
 
+    //agrego el html
     productCard.innerHTML = `<div class="card-img-top d-flex flex-row flex-wrap justify-content-center">
         <img src="./img/drinks/drink-no-img.jpg" alt="icono de vaso con bebida" class="img-fluid maxh150-px">
     </div>
@@ -63,38 +60,25 @@ for (const p of productList) {
             <button class="add btn btn-dark rounded-0"><i class="text-white fas fa-plus"></i></button>
         </form> 
     </div>`;
+
     //y ahora la asigno como child del wrapper
     productWrapper.appendChild(productCard);    
     
 }
 
-// Aumentar y disminuir productos
-
+// Aumentar y disminuir productos / Array con los valores de los input, luego almacena las modificaciones
 const prodLoop = document.querySelectorAll('.product-card');
-
-const itemCount = document.getElementById('itemsCount');
-
-//Array con los valores de los input, luego almacena las modificaciones
-
-let cartCounter = 0;
-
-
 const btnAdd = document.querySelectorAll('.add');
-
 const btnRem = document.querySelectorAll('.rem');
-
 const inputQty = document.querySelectorAll('.inputQty');
 
-
 for (let i = 0; i < prodLoop.length; i++) {
-
     btnAdd[i].addEventListener('click', (e) => {
         e.preventDefault();
         let modValueAdd = parseInt(productList[i].productInCart) + 1;        
         productList[i].productInCart = modValueAdd;
         inputQty[i].setAttribute('value', modValueAdd);
-        cartCounter = cartCounter+1;
-        itemCount.innerHTML = '(' + cartCounter  + ')';
+        itemCount.innerHTML = '(' + cartCounter()  + ')';
         AddToCart();
 
     });  
@@ -102,57 +86,41 @@ for (let i = 0; i < prodLoop.length; i++) {
     btnRem[i].addEventListener('click', (e) => {
         e.preventDefault();
         if (productList[i].productInCart <= 0 ) {
-
             productList[i].productInCart = 0;
-
         } else {
-
             let modValueRem = productList[i].productInCart - 1;            
             productList[i].productInCart = modValueRem;
             inputQty[i].setAttribute('value', modValueRem);
-            cartCounter = cartCounter-1;
-            itemCount.innerHTML = '(' + cartCounter  + ')';
-            AddToCart();       
-
+            itemCount.innerHTML = '(' + cartCounter()  + ')';
+            AddToCart(); 
         }
-
     }); 
         
 }
 
 
+function addProducts(productSKU, productName, productType, productVariant, productPresentation, productPresentationPack, productPresentationQty, productPrice, productInCart){    
+    var p = new Product(productSKU, productName, productType, productVariant, productPresentation, productPresentationPack, productPresentationQty, productPrice, productInCart); 
+    productList.push(p);
+}
+
 function AddToCart(){
     const cart = productList.filter(productList => productList.productInCart > 0);
+    const updateProductList = productList;
+    let updateList = JSON.stringify(updateProductList);
     let cartList = JSON.stringify(cart);
     localStorage.setItem('Carrito', cartList);   
+    localStorage.setItem('listaActualizada', updateList); 
     
 }
 
-const modalOpen = document.getElementById('cart');
-
-const cartItemsList = document.getElementById('cartItems');
-
-modalOpen.addEventListener('click', (e) => {
-
-    e.preventDefault();    
-
-    let cartItems = JSON.parse(localStorage.getItem('Carrito'));
-
-    let cartItemsListInner = []
-
-    for (const p of cartItems) {
-
-        cartItemsListInner.push(`<div class="d-block rounded border text-left px-4 py-2">
-        <span>${(p.productInCart)}x${p.productType}&nbsp;${p.productName}-${p.productVariant}&nbsp;|&nbsp;${p.productPresentation}&nbsp;|&nbsp;${p.productPresentationPack}&nbsp;x${p.productPresentationQty}</span>
-        <span class="d-block fw-bold">Subtotal: $${(p.productPrice)*(p.productPresentationQty)*(p.productInCart)}</span>
-        </div>`)  
-        
-    }
-
-    cartItemsList.innerHTML = cartItemsListInner.join('');   
-
-})
-
+function cartCounter(){
+    let items = 0;
+    productList.forEach(p => {
+        items = items + p.productInCart;        
+    });
+    return items
+}
 
 
 
