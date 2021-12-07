@@ -24,19 +24,19 @@ $(document).ready(function () {
 
     $.ajax({
         type: "GET",
-        url: "https://www.dolarsi.com/api/api.php?type=valoresprincipales",
-        data: "data",
+        url: "https://api-dolar-argentina.herokuapp.com/api/dolarblue",
+        data: "array",
         dataType: "json",
-        success: function(response) {
+        success: function (response) {
 
-            for (const v of response) {
-                dolarValue.push(v);                  
-            }
-
-
+            console.log(response);
+            
         }
     });
-    
+
+      
+
+    console.log(dolarValue);
 
   
 });
