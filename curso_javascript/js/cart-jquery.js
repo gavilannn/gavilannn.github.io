@@ -20,6 +20,25 @@ $(document).ready(function () {
         }, 1000);
     });
 
+    dolarValue = [];
+
+    $.ajax({
+        type: "GET",
+        url: "https://www.dolarsi.com/api/api.php?type=valoresprincipales",
+        data: "data",
+        dataType: "json",
+        success: function(response) {
+
+            for (const v of response) {
+                dolarValue.push(v);                  
+            }
+
+
+        }
+    });
+    
+
+  
 });
 
 
