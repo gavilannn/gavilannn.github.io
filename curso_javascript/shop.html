@@ -109,8 +109,11 @@
             <div id="cartItems" class="modal-body">
 
             </div>
-            <div class="modal-footer total">
-                <p id="totalCart" class="text-end fs-5 fw-bold w-100">Total: $<span></span></p>
+            <div class="modal-footer total d-flex flex-row justify-content-between">
+                
+                <div id="pagoUsd" class="alert alert-warning w-auto d-inline">¡Ahora también podes pagar en dolares! - Cotización del dia <strong>U$D 1 = $ <span id="dolarToday"></span></strong><button id="btn_dollar" class="btn btn-warning ms-3 d-inline">Ver total en USD</button><button id="btn_pesos" class="btn btn-warning ms-3 d-none">Ver total en ARS</button></div>
+
+                <p id="totalCart" class="d-inline float-end text-end maxw200px fs-5 fw-bold"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary rounded-0 " id="emptyCart">Vaciar carrito</button>    
@@ -119,7 +122,6 @@
         </div>
         </div>
     </div>
-
  
 
     <script src="assets/js/bootstrap.min.js"></script>

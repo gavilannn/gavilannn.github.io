@@ -19,7 +19,6 @@ const productWrapper = document.getElementById('productList');
 const itemCount = document.getElementById('itemsCount');
 
 
-
 // construccion lista de productos
 if (localStorage.getItem('listaActualizada')){
 
@@ -34,7 +33,6 @@ if (localStorage.getItem('listaActualizada')){
 } else {
 
     const catalogUrl = new Request('catalogo.json');
-
 
     fetch(catalogUrl)
     .then(response => response.json())
@@ -51,11 +49,9 @@ if (localStorage.getItem('listaActualizada')){
 
 }
 
-
 // Aumentar y disminuir productos / Array con los valores de los input, luego almacena las modificaciones
 
-setTimeout(() => {
-    
+setTimeout(() => {    
 
 const prodLoop = document.querySelectorAll('.product-card');
 const btnAdd = document.querySelectorAll('.add');
@@ -67,7 +63,6 @@ console.log(prodLoop);
 for (let i = 0; i < prodLoop.length; i++) {
 
     prodLoop[i].classList.remove('d-none');
-
 
     btnAdd[i].addEventListener('click', (e) => {
         e.preventDefault();
@@ -95,11 +90,7 @@ for (let i = 0; i < prodLoop.length; i++) {
         
 }
 
-
-
 }, 1000);
-
-
 
 function addProducts(productSKU, productName, productType, productVariant, productPresentation, productPresentationPack, productPresentationQty, productPrice, productInCart){    
     var p = new Product(productSKU, productName, productType, productVariant, productPresentation, productPresentationPack, productPresentationQty, productPrice, productInCart); 
@@ -136,15 +127,13 @@ function createDivProd(productSKU, productName, productType, productVariant, pro
 
 }
 
-
 function AddToCart(){
     const cart = productList.filter(productList => productList.productInCart > 0);
     const updateProductList = productList;
     let updateList = JSON.stringify(updateProductList);
     let cartList = JSON.stringify(cart);
     localStorage.setItem('Carrito', cartList);   
-    localStorage.setItem('listaActualizada', updateList); 
-    
+    localStorage.setItem('listaActualizada', updateList);     
 }
 
 function cartCounter(){
@@ -154,20 +143,3 @@ function cartCounter(){
     });
     return items
 }
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
