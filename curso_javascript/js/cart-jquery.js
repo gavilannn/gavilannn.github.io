@@ -3,7 +3,6 @@ $(function () {
     $("#cart").on("click", function (e) {
         e.preventDefault();
         createCart();
-        $("#closeCart").addClass("d-none");
     });
 
     $("#emptyCart").on("click", function (e) {
@@ -66,31 +65,26 @@ $(function () {
     $("#checkout").on("click", function (e) {
         e.preventDefault();
         $("#cartItems > div").remove();
-        $(".total").html("");
+        $(".modal-footer").hide();
+        $(".total").hide();
         $("#cartItems").append(`<div class="d-flex flex-column justify-content-center minh-100 align-items-center">
         <div class="spinner-border" role="status"></div>
-        <span class="text-center text-dark fw-bold d-block mt-2 w-100">Procesando su pago...</span>
-      </div>`);
-      $(".modal-footer").hide();
-      $(".total").hide();
-      setTimeout(() => {
-        $("#cartItems > div").remove();
-        
-        $("#cartItems").append(`<div class="d-flex flex-column justify-content-center minh-100 align-items-center">
+            <span class="text-center text-dark fw-bold d-block mt-2 w-100">Procesando su pago...</span>
+        </div>`);
+       
+        setTimeout(() => {
+            $("#cartItems > div").remove();
+
+            $("#cartItems").append(`<div class="d-flex flex-column justify-content-center minh-100 align-items-center">
         <span class="text-center text-dark fw-bold d-block mt-2 w-100">Su pago fue procesado correctamente.<br>¡Gracias por comprar en Tienda de Bebidas!</span>
         </div>`);
-        $(".modal-content").append(`<div class="modal-footer">        
-        <button type="button" id="closeCart" class="btn btn-dark rounded-0 d-none mx-auto" data-bs-dismiss="modal"><i class="fas fa-times me-2"></i> Cerrar</button>
+            $(".modal-content").append(`<div class="modal-footer closeCart">        
+        <button type="button" id="closeCart" class="btn btn-dark rounded-0 mx-auto" data-bs-dismiss="modal"><i class="fas fa-times me-2"></i> Cerrar</button>
         </div>`);
-        
-        
-        $("#closeCart").removeClass("d-none");
+
+        }, 3000);
 
 
-          
-      }, 3000);
-
-        
     });
 
 });
@@ -101,11 +95,11 @@ function createCart() {
 
     let totalCart = 0;
 
-    $(".modal-footer").show();
-    $(".total").show();
-
     if (cartItems) {
 
+        $(".modal-footer").show();
+        $(".total").show();
+        $(".closeCart").hide();
         $("#cartItems > div").remove();
         $("#emptyCart").attr("disabled", false);
         $("#checkout").attr("disabled", false);
@@ -127,8 +121,8 @@ function createCart() {
 
     } else {
 
-        $(".total").addClass("d-none");
-
+        $(".total").hide();
+        $(".closeCart").hide();
         $("#cartItems").append(`<div class="w-100 h-100 d-flex justify-content-center align-items-center">
         <h3 class="text-secondary my-auto text-center"><i class="fas fa-shopping-cart fa-2x"></i><br>No hay productos en el carrito</h3></div>`);
         $("#emptyCart").attr("disabled", true);
