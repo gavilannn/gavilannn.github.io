@@ -102,13 +102,25 @@
     <section id="destacados" class="container-fluid container-xl">
         <div id="productTitle" class="row pt-5">
             <div class="col-12 py-4">
-                <h2 class="text-dark fs-3 text-center">Productos destacados</h2>
+                <h2 class="text-dark fs-3 text-center">Catálogo completo</h2>
             </div>
         </div>
         <div id="productList" class="row g-2 pb-5">
             <!--Contenido por javascript-->
         </div>
     </section>
+
+    <footer class="bg-dark container-fluid">
+        <div class="row mb-0">
+            <div class="container-xl">
+                <div class="row mb-0">
+                    <div class="col-12 py-3">
+                        <p class="text-white text-center w-100 mb-0 fs-6">©<span id="year"></span> | Tienda de Bebidas - Todos los derechos reservados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Modal -->
     <div class="modal fade" id="cartModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
@@ -121,15 +133,15 @@
             <div id="cartItems" class="modal-body">
 
             </div>
-            <div class="modal-footer total d-flex flex-row justify-content-between">
+            <div class="modal-footer total  justify-content-between">
                 
                 <div id="pagoUsd" class="alert alert-warning w-auto d-inline">¡Ahora también podes pagar en dolares! - Cotización del dia <strong>U$D 1 = $ <span id="dolarToday"></span></strong><button id="btn_dollar" class="btn btn-warning ms-3 d-inline">Ver total en USD</button><button id="btn_pesos" class="btn btn-warning ms-3 d-none">Ver total en ARS</button></div>
 
                 <p id="totalCart" class="d-inline float-end text-end maxw200px fs-5 fw-bold"></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary rounded-0 " id="emptyCart">Vaciar carrito</button>    
-                <button type="button" class="btn btn-dark rounded-0 " data-bs-dismiss="modal">Continuar al pago</button>
+                <button type="button" class="btn btn-dark rounded-0 " id="emptyCart" disabled>Vaciar carrito</button>    
+                <button type="button" class="btn btn-success rounded-0 " id="checkout" disabled>Continuar al pago</button>
             </div>
         </div>
         </div>

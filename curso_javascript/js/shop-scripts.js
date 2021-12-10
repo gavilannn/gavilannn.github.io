@@ -16,6 +16,7 @@ if (userBornSave == null) {
 $(function () {
 
   $(".animate-banner.yes > h2").hide().fadeIn(1000);
+  
 
   $(".animate-banner").eq(1).addClass("not");
   $(".animate-banner").eq(2).addClass("not");
@@ -58,3 +59,7 @@ $(function () {
 
 
 });
+
+const currentDate = new Date();
+const postYear = document.getElementById('year');
+postYear.innerHTML = currentDate.getFullYear();
