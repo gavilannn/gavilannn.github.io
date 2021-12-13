@@ -46,7 +46,6 @@ if (localStorage.getItem('listaActualizada')) {
 
 }
 
-
 // Aumentar y disminuir productos / Array con los valores de los input, luego almacena las modificaciones
 
 setTimeout(() => {
@@ -103,7 +102,9 @@ function createDivProd(productSKU, productName, productType, productVariant, pro
 
     //defino id y clases BS    
     productCard.setAttribute('id', productSKU);
-    productCard.classList.add('product-card', 'col-sm-6', 'col-md-4', 'col-lg-3', 'card', 'border-dark', 'rounded-0', 'mb-2', 'd-none');
+    productCard.style.display = 'none';
+
+    productCard.classList.add('product-card', 'col-sm-6', 'col-md-4', 'col-lg-3', 'card', 'border-dark', 'rounded-0', 'mb-2');
 
     //agrego el html
     productCard.innerHTML = `<div class="card-img-top d-flex flex-row flex-wrap justify-content-center">
