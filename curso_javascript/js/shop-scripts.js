@@ -19,11 +19,12 @@ postYear.innerHTML = currentDate.getFullYear();
 
 //filtro searchbar y botones
 
-let searchBar = document.querySelector("#searchBar");
+let searchBarSM = document.getElementById('searchbar_sm');
+let searchBarLG = document.getElementById('searchbar_lg');
+
 let list = document.querySelectorAll("#productList > div");
 let prodTitle = document.querySelector("#productTitle > div > h2");
 let matchesText = document.querySelector(".matchesText");
-
 
 const btnBeer = document.getElementById('btn_beer');
 const btnWine = document.getElementById('btn_wine');
@@ -64,22 +65,29 @@ btnAll.addEventListener('click', (e) => {
 });
 
 
-searchBar.addEventListener('keyup', (e) => {
+searchBarLG.addEventListener('keyup', (e) => {
   e.preventDefault();
-  searchForDrinks();
-
+  searchForDrinks(searchBarLG);
 });
 
-function searchForDrinks() {
+searchBarSM.addEventListener('keyup', (e) => {
+  e.preventDefault();
+  searchForDrinks(searchBarSM);
+});
+
+
+function searchForDrinks(a) {
 
   window.scroll({
     top: 300,
     left: 0,
     behavior: 'smooth'
   });
+
   let list = document.querySelectorAll("#productList > div");
 
-  let searchBarVal = document.querySelector("#searchBar").value.toLowerCase();
+  let searchBarVal = a.value.toLowerCase();
+
   let displayCounter = 0;
 
   prodTitle.innerHTML = "Resultados de búsqueda";
@@ -168,6 +176,7 @@ function filterDrinks(a, b, titulo) {
 
 }
 
+
 //funciones jquery
 
 $(function () {
@@ -181,16 +190,18 @@ $(function () {
 
   }, 1000);
 
-  $("#searchBar").on("keyup", (e) => {
+  $("#searchbar_sm, #searchbar_lg").on("keyup", (e) => {
     e.preventDefault();
     if ($(".matched").length) {
       setTimeout(() => {
         $(".matched").fadeIn(1000, function () {
           $(this).show();
         });
-      }, 300);
+      }, 500);
     }
   })
+
+
 
   $(".animate-banner").eq(1).addClass("not");
   $(".animate-banner").eq(2).addClass("not");

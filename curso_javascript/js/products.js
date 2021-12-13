@@ -108,7 +108,7 @@ function createDivProd(productSKU, productName, productType, productVariant, pro
 
     //agrego el html
     productCard.innerHTML = `<div class="card-img-top d-flex flex-row flex-wrap justify-content-center">
-        <img src="./img/drinks/drink-no-img.jpg" alt="icono de vaso con bebida" class="img-fluid maxh150-px">
+        <img src="./img/drinks/${productSKU}.jpg" alt="${productType}&nbsp;${productName}" class="img-fluid maxh150-px">
     </div>
     <div class="card-body d-flex flex-row flex-wrap justify-content-center">
         <h5 class="card-title text-center w-100">${productType}&nbsp;${productName}</h5>
