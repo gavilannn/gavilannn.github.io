@@ -19,20 +19,19 @@ $(function () {
         }, 1000);
     });
 
+    $.ajax({
+        url: 'https://api.bluelytics.com.ar/v2/latest',
+        dataType: 'json',
+        success: function( data ) {
+            let dv = JSON.stringify(data.blue.value_avg);
 
-    $.getJSON("https://api.bluelytics.com.ar/v2/latest",
-        (resp, status) => {
-
-            if (status === "success") {
-
-                let dv = JSON.stringify(resp.blue.value_avg);
-
-                $("#dolarToday").text(dv)
-
-            }
-
+            $("#dolarToday").text(dv)
+        },
+        error: function( data ) {
+            $("#pagoUsd").html("<i class=\"fas fa-exclamation-triangle fs-4 me-2\"></i><strong>IMPORTANTE: </strong>No se pudo leer la cotización del día. El pago en USD no está disponible");
         }
-    );
+      });
+
 
     $("#btn_pesos").on("click", function (e) {
         e.preventDefault();

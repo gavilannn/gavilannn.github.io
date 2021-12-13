@@ -19,21 +19,18 @@
     <nav class="navbar navbar-expand-lg navbar-dark border-0 bg-dark sticky-top flex-md-column">
         
         <div class="container px-1 px-lg-3 d-flex justify-content-between flex-row flex-wrap">
-            <a class="navbar-brand text-white fw-bold d-inline-flex fs-6 fw-bold me-auto me-lg-0 order-2 order-lg-1" href="#"><i class="fas fa-glass-cheers fa-2x me-3 mt-1 mb-2 mb-lg-0"></i><span class="mt-0 lh-sm d-none d-lg-inline mt-lg-2">Tienda de bebidas</span></a>
+            <a class="navbar-brand text-white fw-bold d-inline-flex fs-6 fw-bold me-auto me-lg-0 order-2 order-lg-1" href="shop.html"><i class="fas fa-glass-cheers fa-2x me-3 mt-1 mb-2 mb-lg-0"></i><span class="mt-0 lh-sm d-none d-lg-inline mt-lg-2">Tienda de bebidas</span></a>
             <button class="navbar-toggler order-1 order-lg-2 ps-0 border-0 me-auto text-white fs-6 not-focus" type="button" data-bs-toggle="collapse"
                 data-bs-target="#menusuperior,#menuproductos" aria-controls="menusuperior,menuproductos" aria-expanded="false"
                 aria-label="Menú">
                 <i class="fas fa-bars me-2"></i> Menú
             </button>
             <div class="collapse navbar-collapse d-none d-lg-inline-flex w-75 maxw550-px order-lg-2" id="search-lg">
-                <form class=" mb-auto input-group mx-auto ">
-                    <input class="form-control border-dark border-end-0" type="search" placeholder="Busca tu bebida" aria-label="Search">
-                    <button class="btn btn-light bg-white border-dark border-start-0" type="submit"><i class="fas fa-search"></i></button>
-                </form>
+                <div class=" mb-auto input-group mx-auto ">
+                    <input class="form-control border-dark border-end-0" type="search" id="searchBar" placeholder="Busca tu bebida" aria-label="Search">
+                    <!-- <button class="btn btn-light bg-white border-dark border-start-0" type="submit"><i class="fas fa-search"></i></button> -->
+                </div>
             </div>
-            <!-- <div id="login" class="d-none d-lg-inline-flex order-lg-4">
-                <span class="text-white"><i class="fas fa-user "></i> Inicia sesión</span>
-            </div> -->
             <span id="cart" data-bs-toggle="modal" data-bs-target="#cartModal" class="order-3 order-lg-5 text-white"><i class="fas fa-shopping-cart "></i> Tu carrito <span id="itemsCount">(0)</span></span>
         </div>
 
@@ -41,30 +38,30 @@
             <div class=" collapse navbar-collapse order-1 order-lg-2" id="menuproductos">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item search-sm d-inline-block d-lg-none">
-                        <form class="d-flex w-100 mb-auto input-group mx-auto">
-                            <input class="form-control border-dark border-end-0" type="search" placeholder="Busca tu bebida" aria-label="Search">
-                            <button class="btn btn-light bg-white border-dark border-start-0" type="submit"><i class="fas fa-search"></i></button>
-                        </form>
+                        <div class="d-flex w-100 mb-auto input-group mx-auto">
+                            <input class="form-control border-dark border-end-0" type="search" id="searchBar" placeholder="Busca tu bebida" aria-label="Search">
+                            <!-- <button class="btn btn-light bg-white border-dark border-start-0" type="submit"><i class="fas fa-search"></i></button> -->
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white " aria-current="page" href="#">Cervezas</a>
+                        <button class="nav-link text-white bg-dark border-0" id="btn_beer">Cervezas</button>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Vinos y champagnes</a>
+                        <span class="nav-link text-white" id="btn_wine">Vinos y champagnes</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Whiskies</a>
+                        <span class="nav-link text-white" id="btn_whisky">Whiskies</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Gines</a>
+                        <span class="nav-link text-white" id="btn_gin">Gines</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Vodkas</a>
+                        <span class="nav-link text-white" id="btn_vodka">Vodkas</span>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="page" href="#">Todo el catálogo</a>
+                        <span class="nav-link text-white" id="btn_all">Catálogo completo</span>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto d-inline-block d-lg-none">
@@ -107,6 +104,7 @@
         </div>
         <div id="productList" class="row g-2 pb-5">
             <!--Contenido por javascript-->
+            <p class="matchesText text-center"></p>
         </div>
     </section>
 
@@ -151,8 +149,8 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/fa-all.js"></script>
-    <script src="js/shop-scripts.js"></script>
     <script src="js/products.js"></script>
+    <script src="js/shop-scripts.js"></script>
     <script src="js/cart-jquery.js"></script>
 </body>
 </body>
