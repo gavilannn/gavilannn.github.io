@@ -18,6 +18,8 @@ a:hover, .nav-link:hover, #cart:hover{color:rgb(221, 198, 156)!important; cursor
 
 #logo, .nav-link {cursor: pointer!important;}
 
+#cartItems > div:last-child {border-bottom: none!important;}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     .card { width: calc(50% - 1rem)!important; } 

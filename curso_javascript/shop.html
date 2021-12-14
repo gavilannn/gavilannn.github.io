@@ -26,7 +26,7 @@
                 <i class="fas fa-bars me-2"></i> Menú
             </button>
             <div class="collapse navbar-collapse d-none d-lg-inline-flex w-75 maxw550-px order-lg-2" id="search-lg">
-                <div class="d-flex w-100 mb-auto input-group mx-auto"><input class="form-control border-dark border-end-0" type="search" id="searchbar_lg" placeholder="Busca tu bebida" aria-label="Search"></div>
+                <div class="d-flex w-100 mb-auto input-group mx-auto"><input class="form-control border-dark border-end-0" type="search" id="searchbar_lg" placeholder="Busca tu bebida..." aria-label="Search"></div>
             </div>
             <span id="cart" data-bs-toggle="modal" data-bs-target="#cartModal" class="order-3 order-lg-5 text-white"><i class="fas fa-shopping-cart "></i> Tu carrito <span id="itemsCount">(0)</span></span>
         </div>
@@ -35,7 +35,7 @@
             <div class=" collapse navbar-collapse order-1 order-lg-2" id="menuproductos">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li id="search-sm" class="nav-item search-sm d-inline-block d-lg-none">
-                        <div class="d-flex w-100 mb-auto input-group mx-auto"><input class="form-control border-dark border-end-0" type="search" id="searchbar_sm" placeholder="Busca tu bebida" aria-label="Search"></div>
+                        <div class="d-flex w-100 mb-auto input-group mx-auto"><input class="form-control border-dark border-end-0" type="search" id="searchbar_sm" placeholder="Busca tu bebida..." aria-label="Search"></div>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link text-white bg-dark border-0" id="btn_beer">Cervezas</button>
@@ -119,10 +119,10 @@
         <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title fw-bold" id="staticBackdropLabel">Tu carrito</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 class="modal-title fw-bold" id="staticBackdropLabel"><i class="fas fa-shopping-cart me-2 fs-5"></i> Tu carrito</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" id="btnCloseModal" aria-label="Close"></button>
             </div>
-            <div id="cartItems" class="modal-body">
+            <div id="cartItems" class="modal-body py-0">
 
             </div>
             <div class="modal-footer total  justify-content-between">
@@ -132,8 +132,8 @@
                 <p id="totalCart" class="d-inline float-end text-end maxw200px fs-5 fw-bold"></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark rounded-0 " id="emptyCart" disabled>Vaciar carrito</button>    
-                <button type="button" class="btn btn-success rounded-0 " id="checkout" disabled>Continuar al pago</button>
+                <button type="button" class="btn btn-dark rounded-0 " id="emptyCart" disabled> <i class="fas fa-cart-arrow-down me-2"></i> Vaciar carrito</button>    
+                <button type="button" class="btn btn-success rounded-0 " id="checkout" disabled>Continuar al pago <i class="ms-2 fas fa-chevron-right"></i></button>
             </div>
         </div>
         </div>

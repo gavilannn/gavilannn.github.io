@@ -183,6 +183,7 @@ $(function () {
 
   $(".animate-banner.yes > h2").hide().fadeIn(500);
 
+  
   setTimeout(() => {
     $("#productList > div").fadeIn(1000, function () {
       $(this).show();
@@ -248,5 +249,7 @@ $(function () {
     $(".matched").hide().fadeIn(1000);
 
   });
+
+  
 
 });

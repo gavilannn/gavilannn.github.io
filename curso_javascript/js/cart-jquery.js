@@ -15,7 +15,8 @@ $(function () {
         <h3 class="text-secondary my-auto text-center"><i class="fas fa-shopping-cart fa-2x"></i><br>No hay productos en el carrito</h3></div>`);
 
         setTimeout(() => {
-            location.href = "shop.html";
+            $(".modal").hide();
+            location.reload();
         }, 1000);
     });
 
@@ -45,6 +46,12 @@ $(function () {
     });
 
 
+    $("#btnCloseModal").on("click", function (e) {
+        e.preventDefault();
+        location.reload();       
+    });
+
+
     $("#btn_dollar").on("click", function (e) {
 
         e.preventDefault();
@@ -70,7 +77,8 @@ $(function () {
         <div class="spinner-border" role="status"></div>
             <span class="text-center text-dark fw-bold d-block mt-2 w-100">Procesando su pago...</span>
         </div>`);
-       
+        localStorage.removeItem('Carrito');
+        localStorage.removeItem('listaActualizada');       
         setTimeout(() => {
             $("#cartItems > div").remove();
 
@@ -81,10 +89,19 @@ $(function () {
         <button type="button" id="closeCart" class="btn btn-dark rounded-0 mx-auto" data-bs-dismiss="modal"><i class="fas fa-times me-2"></i> Cerrar</button>
         </div>`);
 
+        $("#closeCart").on("click", function (e) {
+            e.preventDefault();
+            location.reload();         
+        });
+
         }, 3000);
 
 
     });
+
+    
+
+    
 
 });
 
@@ -104,9 +121,15 @@ function createCart() {
         $("#checkout").attr("disabled", false);
 
         cartItems.forEach(p => {
-            $("#cartItems").append(`<div class="d-block rounded border text-left px-4 py-2">
-            <span>${(p.productInCart)}x&nbsp;${p.productPresentationPack}&nbsp;x${p.productPresentationQty}&nbsp;|&nbsp;${p.productType}&nbsp;${p.productName}-${p.productVariant}&nbsp;|&nbsp;${p.productPresentation}&nbsp;</span>
-            <span class="d-block fw-bold">Subtotal: $${(p.productPrice)*(p.productPresentationQty)*(p.productInCart)}</span>
+            $("#cartItems").append(`<div class="d-flex w-100 justify-items-start  rounded border-bottom text-left px-4 py-3">
+            <div class="w50-px h50-px float-start position-relative me-5 ">
+                <span class="position-absolute top-100 start-100 translate-middle badge rounded-pill bg-success">${(p.productInCart)}</span>
+                <img src="./img/products/${(p.productSKU)}.jpg" class="img-cover float-start me-5 h50-px w50-px">
+            </div>
+            <div>            
+                <span>${p.productType}&nbsp;${p.productName}-${p.productVariant}&nbsp;|&nbsp;${p.productPresentation}&nbsp;|&nbsp;${p.productPresentationPack}&nbsp;x${p.productPresentationQty}</span>
+                <span class="d-block fw-bold">Subtotal: $${(p.productPrice)*(p.productPresentationQty)*(p.productInCart)}</span>
+            </div>
             </div>`);
             totalCart = totalCart + ((p.productPrice) * (p.productPresentationQty) * (p.productInCart));
         });
